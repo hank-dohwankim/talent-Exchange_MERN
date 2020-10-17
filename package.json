@@ -1,0 +1,22 @@
+{
+  "name": "talent-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hank-dohwankim/talent-Exchange_MERN.git"
+  },
+  "author": "Hank Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hank-dohwankim/talent-Exchange_MERN/issues"
+  },
+  "homepage": "https://github.com/hank-dohwankim/talent-Exchange_MERN#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
