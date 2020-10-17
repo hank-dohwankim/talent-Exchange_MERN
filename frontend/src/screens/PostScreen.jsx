@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Rating from './../components/Rating';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
-import Rating from './../components/Rating';
-import posts from './../posts';
+import axios from 'axios';
 
 const PostScreen = ({ match }) => {
-  const post = posts.find((p) => p._id === match.params.id);
+  const [post, setPost] = useState([]);
+  useEffect(() => {
+    const fetchPost = async () => {
+      const { data } = await axios.get(`/api/posts/${match.params.id}`);
+
+      setPost(data);
+    };
+
+    fetchPost();
+  }, [match]);
+
   return (
     <>
       <Link className="btn btn-dark my-3" to="/">

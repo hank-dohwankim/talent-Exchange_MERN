@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Post from './../components/Post';
-import posts from './../posts';
+import axios from 'axios';
 
 const HomeScreen = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get('/api/posts');
+
+      setPosts(data);
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <>
       <h1>Latest Posts</h1>
