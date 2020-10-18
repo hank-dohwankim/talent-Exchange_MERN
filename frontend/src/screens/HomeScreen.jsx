@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Post from './../components/Post';
-import axios from 'axios';
+import { listPosts } from './../actions/postActions';
 
 const HomeScreen = () => {
-  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+
+  const postList = useSelector((state) => state.postList);
+  const { loading, error, posts } = postList;
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const { data } = await axios.get('/api/posts');
-
-      setPosts(data);
-    };
-
-    fetchPosts();
-  }, []);
+    dispatch(listPosts());
+  }, [dispatch]);
 
   return (
     <>
       <h1>Latest Posts</h1>
-      <Row>
-        {posts.map((post) => (
-          <Col key={post._id} sm={12} md={6} lg={4} xl={3}>
-            <Post post={post} />
-          </Col>
-        ))}
-      </Row>
+      {loading ? (
+        <h2>Loading</h2>
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <Row>
+          {posts.map((post) => (
+            <Col key={post._id} sm={12} md={6} lg={4} xl={3}>
+              <Post post={post} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </>
   );
 };
