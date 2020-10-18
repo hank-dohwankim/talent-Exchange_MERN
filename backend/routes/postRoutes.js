@@ -1,7 +1,8 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-const router = express.Router();
 import Post from '../models/postModel.js';
+
+const router = express.Router();
 
 // @desc    Fetch all posts
 // @route   GET /api/posts
@@ -26,7 +27,8 @@ router.get(
     if (post) {
       res.json(post);
     } else {
-      res.status(404).json({ message: 'Post not found' });
+      res.status(404);
+      throw new Error('Post not found');
     }
   })
 );
