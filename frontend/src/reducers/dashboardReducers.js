@@ -24,6 +24,13 @@ export const dashboardReducer = (state = { dashboardMessages: [] }, action) => {
           dashboardMessages: [...state.dashboardMessages, message],
         };
       }
+    case DASHBOARD_REMOVE_MESSAGE:
+      return {
+        ...state,
+        dashboardMessages: state.dashboardMessages.filter(
+          (x) => x.post !== action.payload
+        ),
+      };
     default:
       return state;
   }

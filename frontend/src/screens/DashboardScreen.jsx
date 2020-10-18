@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Form, Button, Card } from 'react-bootstrap';
-import { addToDashboard } from '../actions/dashboardActions';
+import {
+  addToDashboard,
+  removeFromDashboard,
+} from '../actions/dashboardActions';
 import Message from '../components/Message';
 
 const DashboardScreen = ({ match, location, history }) => {
@@ -21,7 +24,7 @@ const DashboardScreen = ({ match, location, history }) => {
   }, [dispatch, postId, userId]);
 
   const removeFromDashboardHandler = (postId) => {
-    console.log('remove');
+    dispatch(removeFromDashboard(postId));
   };
 
   const startChatHandler = (postId, userId) => {
@@ -35,7 +38,7 @@ const DashboardScreen = ({ match, location, history }) => {
         <br />
         {dashboardMessages.length === 0 ? (
           <Message>
-            Your cart is empty <Link to="/">Go Back</Link>
+            Your list is empty <Link to="/">Go Back</Link>
           </Message>
         ) : (
           <ListGroup>
