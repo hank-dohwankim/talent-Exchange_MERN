@@ -7,9 +7,9 @@ const Post = ({ post }) => {
     <a href={`/post/${post._id}`}>
       <Card className="my-3 p-3 rounded">
         <Card.Text as="div">
-          <span>{post.myTalent}</span>
+          <span>{post.teach}</span>
           <i className="fas fa-exchange-alt"></i>
-          <span>{post.wantedTalent}</span>
+          <span>{post.learn}</span>
         </Card.Text>
         <Card.Body>
           <Card.Title as="div">

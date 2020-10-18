@@ -11,8 +11,8 @@ const PostScreen = ({ match }) => {
       const { data } = await axios.get(`/api/posts/${match.params.id}`);
 
       setPost(data);
+      console.log(data);
     };
-
     fetchPost();
   }, [match]);
 
@@ -38,10 +38,10 @@ const PostScreen = ({ match }) => {
               <Col md={1} className="text-left">
                 {post.username}
               </Col>
-              <Col md={2} className="text-left">
+              <Col md={3} className="text-left">
                 <Rating
                   value={post.rating}
-                  // text={`${post.numReviews} reviews`}
+                  text={`${post.numReviews} reviews`}
                 />
               </Col>
             </Row>
