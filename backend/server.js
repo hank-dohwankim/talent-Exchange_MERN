@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
-import postRoute from './routes/postRoutes.js';
-import { errorHandler, notFound } from './middleware/errorMiddleware.js';
+
+import postRoutes from './routes/postRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -14,10 +16,11 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('API is running');
+  res.send('API is running....');
 });
 
-app.use('/api/posts', postRoute);
+app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
