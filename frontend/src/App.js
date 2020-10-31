@@ -8,6 +8,8 @@ import PostScreen from './screens/PostScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import MessageScreen from './screens/MessageScreen';
 
 function App() {
   return (
@@ -15,8 +17,10 @@ function App() {
       <Header />
       <main className="py-3">
         <Container>
+          <Route path="/message" component={MessageScreen} />
           <Route path="/login" component={LoginScreen} />
-          <Route path="/register" component={RegisterScreen} />
+          <Route path="/register" component={RegisterScreen} />{' '}
+          <Route path="/profile" component={ProfileScreen} />
           <Route path="/post/:id" component={PostScreen} />
           <Route path="/dashboard/:id?" component={DashboardScreen} />
           <Route path="/" component={HomeScreen} exact />

@@ -28,7 +28,7 @@ const DashboardScreen = ({ match, location, history }) => {
   };
 
   const startChatHandler = (postId, userId) => {
-    history.push('/login?redirect=chatting');
+    history.push('/login?redirect=message');
   };
 
   return (

@@ -3,7 +3,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { postDetailsReducer, postListReducer } from './reducers/postReducers';
 import { dashboardReducer } from './reducers/dashboardReducers';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+} from './reducers/userReducers';
 
 const reducer = combineReducers({
   postList: postListReducer,
@@ -11,6 +16,8 @@ const reducer = combineReducers({
   dashboard: dashboardReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
 
 const dashboardMessagesFromStrage = localStorage.getItem('dashboardMessages')
